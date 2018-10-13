@@ -12,12 +12,12 @@ Ejercitar la escritura de código en ambientes colaborativos utilizando una meto
 
 ### Integrantes
 
-Nro | Nombre | Legajo | Mail
-----|--------|--------|------
-1   |        |        |
-2   |        |        |
-3   |        |        |
-4   |        |        |
+Nro | Nombre   | Legajo | Mail
+----|----------|--------|----------------------------- 
+1   |  Oscar   |        | oscar_master93@hotmail.com      |
+2   |  Nicolas |        | fernandonicolasmunoz@gmail.com  |
+3   |  Fernando|        | fer10rodriguez@gmail.com        |
+4   |          |        |
     
 ### Entrega
 
