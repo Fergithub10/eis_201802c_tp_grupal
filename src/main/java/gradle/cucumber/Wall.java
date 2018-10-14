@@ -1,4 +1,4 @@
 package gradle.cucumber;
 
-public class Wall {
+public class Wall implements Included{
 }

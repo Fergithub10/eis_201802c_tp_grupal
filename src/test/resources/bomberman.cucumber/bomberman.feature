@@ -14,4 +14,4 @@ Feature: Gradle-Cucumber integration
   Scenario: Bomberman dies when he tries to move to a cell with an enemy
     Given As a bomberman
     When I see a cell with an enemy
-    Then I can't move to that cell
+    Then bomberman dies
