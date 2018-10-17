@@ -1,4 +1,4 @@
-Feature: Gradle-Cucumber integration
+Feature: Bomberman movement behaviour
 
   # ATDD 1
 
@@ -12,24 +12,16 @@ Feature: Gradle-Cucumber integration
     When I see a cell with a wall
     Then I can't move to that cell
 
+  Scenario: Bomberman can move to empty cell
+    Given As a bomberman
+    When I see an empty cell
+    And I move to that cell
+    Then bomberman is in an empty cell
+
   Scenario: Bomberman dies when he tries to move to a cell with an enemy
     Given As a bomberman
     When I see a cell with an enemy
-    Then bomberman dies
+    And I move to that cell
+    Then I die
 
-   # ATDD 2
 
-  Scenario: A bomb is lauched with a time of 3 second and destroy walls of melanin
-    Given As a bomb with a time of 3 seconds
-    When  it explodes and there are melinin walls
-    Then  destroy 3 walls of melanin
-
-  Scenario: A bomb is lauched with a time of 3 second and destroy an enemy
-    Given As a bomb with a time of 3 seconds
-    When  it explodes and there is an enemy
-    Then  kill the enemy by the blast  wave
-
-  Scenario: A bomb is lauched with a time of 3 seconds and there is a metal wall
-    Given As a bomb with a time of 3 seconds
-    When  it explodes and there are metal walls
-    Then  it does not destroy the metal wall

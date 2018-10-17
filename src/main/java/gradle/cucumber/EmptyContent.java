@@ -1,19 +1,14 @@
 package gradle.cucumber;
 
-public class Enemy extends Included {
-
-    public Enemy(){
-
-    }
-
+public class EmptyContent extends Included {
     @Override
     public void changeStatus(Bomberman bomberman) {
-        bomberman.setStatus(new Die());
+
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return true;
     }
 
     @Override
@@ -23,6 +18,6 @@ public class Enemy extends Included {
 
     @Override
     public ContentStatus getStatus() {
-        return this.status;
+       return this.status;
     }
 }

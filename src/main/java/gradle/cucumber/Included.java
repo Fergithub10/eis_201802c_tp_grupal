@@ -1,6 +1,16 @@
 package gradle.cucumber;
 
-public interface Included {
+public abstract class Included {
 
+    ContentStatus status = new Fine();
 
+    public Cell cell;
+
+    public abstract void changeStatus(Bomberman bomberman);
+
+    public abstract boolean isEmpty();
+
+    public abstract void destroy();
+
+    public abstract ContentStatus getStatus();
 }
