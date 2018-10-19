@@ -3,7 +3,7 @@ package gradle.cucumber;
 public class Enemy extends Included {
 
     public Enemy(){
-
+        this.status = new Fine();
     }
 
     @Override
@@ -18,7 +18,7 @@ public class Enemy extends Included {
 
     @Override
     public void destroy() {
-
+        this.status = new Destroyed();
     }
 
     @Override
