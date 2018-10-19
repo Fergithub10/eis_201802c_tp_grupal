@@ -45,11 +45,18 @@ public class BombStepdefs {
 
     @When("^it explodes and there is an enemy$")
     public void it_explode_and_there_is_an_enemy() throws Throwable {
+        List<Cell> cells = new ArrayList<Cell>();
 
+        cells.add(new Cell(new Enemy(),2));
+
+        this.casillero = new Casillero(cells);
+
+        this.bomb.explode(this.casillero);
     }
 
     @Then("^kill the enemy by the blast  wave$")
     public void kill_the_enemy_by_the_blast_waves() throws Throwable {
+            Assert.assertTrue(this.casillero.getCells().get(0).getContent().getStatus().isDestroyed());
 
     }
 
@@ -57,11 +64,18 @@ public class BombStepdefs {
 
     @When("^it explodes and there are metal walls$")
     public void it_explode_and_there_are_metal_walls() throws Throwable {
+        List<Cell> cells = new ArrayList<Cell>();
 
+        cells.add(new Cell(new Metal(),2));
+
+        this.casillero = new Casillero(cells);
+
+        this.bomb.explode(this.casillero);
     }
 
     @Then("^it does not destroy the metal wall$")
     public void it_does_not_destroy_the_metal_walls() throws Throwable {
+        Assert.assertFalse(this.casillero.getCells().get(0).getContent().getStatus().isDestroyed());
 
     }
 
