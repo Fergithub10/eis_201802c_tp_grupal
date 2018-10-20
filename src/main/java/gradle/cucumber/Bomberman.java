@@ -1,12 +1,17 @@
 package gradle.cucumber;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Bomberman {
 
     public Cell currentCell;
     public Status status;
+    private List<Power> powers;
 
     public Bomberman(){
         this.status = new Alive();
+        this.powers = new ArrayList<Power>();
     }
 
     public boolean canMove(Cell cell) {
@@ -32,5 +37,20 @@ public class Bomberman {
 
     public boolean isInAnEmptyCell() {
         return this.currentCell.isEmpty();
+    }
+
+    public void setCell(Cell cell) { this.currentCell = cell; }
+
+    public void putBomb(Bomb bomb ) {
+        this.currentCell.setContent(bomb);
+        bomb.setCell(this.currentCell);
+    }
+
+    public void addPower(Power power) {
+        powers.add(power);
+    }
+
+    public boolean powerIncluded(Power power) {
+        return true;
     }
 }
