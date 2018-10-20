@@ -2,6 +2,8 @@ package gradle.cucumber;
 
 public class Wall extends Included{
 
+    ContentStatus status = new Fine();
+
     @Override
     public void changeStatus(Bomberman bomberman) {
 
@@ -12,7 +14,6 @@ public class Wall extends Included{
         return false;
     }
 
-    @Override
     public void destroy() {
         this.status = new Destroyed();
     }

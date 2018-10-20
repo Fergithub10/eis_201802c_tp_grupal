@@ -14,4 +14,8 @@ public class Casillero {
     public List<Cell> getCells() {
         return cells;
     }
+
+    public Cell getCellByDistance(int distance){
+        return this.cells.get(distance - 1);
+    }
 }

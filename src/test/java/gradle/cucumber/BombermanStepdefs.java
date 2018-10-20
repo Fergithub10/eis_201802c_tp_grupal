@@ -49,7 +49,7 @@ public class BombermanStepdefs {
 
     @When("^I see a cell with an enemy$")
     public void iMoveToACellWithAnEnemy() throws Throwable {
-        this.cell = new Cell(new Enemy());
+        this.cell = new Cell(new ProtoMaxJr());
         this.bomberman.move(this.cell);
     }
 
@@ -66,5 +66,15 @@ public class BombermanStepdefs {
     @Then("^bomberman is in an empty cell$")
     public void bombermanIsInAnEmptyCell() throws Throwable {
         assertTrue(this.bomberman.isInAnEmptyCell());
+    }
+
+    @When("^I see a cell with a power$")
+    public void iSeeACellWithAPower() throws Throwable {
+        this.cell = new Cell(new ThrowBomb());
+    }
+
+    @Then("^I get the power$")
+    public void iGetThePower() throws Throwable {
+        assertTrue(this.bomberman.powerIncluded(new ThrowBomb()));
     }
 }

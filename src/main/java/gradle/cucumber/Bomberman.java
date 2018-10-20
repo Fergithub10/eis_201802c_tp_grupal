@@ -46,11 +46,22 @@ public class Bomberman {
         bomb.setCell(this.currentCell);
     }
 
+    public void putBomb(Bomb bomb, int i, Casillero casillero ) {
+        this.currentCell.setContent(bomb);
+        bomb.setCell(this.currentCell);
+    }
+
     public void addPower(Power power) {
         powers.add(power);
     }
 
     public boolean powerIncluded(Power power) {
-        return true;
+       /*TODO mejorar busqueda*/
+        return this.powers.size() != 0 ;
     }
+
+    public void throwBomb(Bomb bomb, int i, Casillero casillero) {
+        casillero.getCellByDistance(i).setContent(bomb);
+    }
+
 }

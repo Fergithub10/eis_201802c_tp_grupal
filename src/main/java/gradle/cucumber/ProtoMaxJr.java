@@ -1,4 +1,33 @@
 package gradle.cucumber;
 
 public class ProtoMaxJr extends Enemy{
+
+    public ProtoMaxJr(){
+        this.status = new Fine();
+    }
+
+    @Override
+    public void changeStatus(Bomberman bomberman) {
+        bomberman.setStatus(new Die());
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Override
+    public void destroy() {
+        this.status = new Destroyed();
+    }
+
+    @Override
+    public ContentStatus getStatus() {
+        return this.status;
+    }
+
+    @Override
+    public void setCell(Cell cell) {
+
+    }
 }

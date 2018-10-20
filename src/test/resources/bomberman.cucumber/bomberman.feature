@@ -24,4 +24,10 @@ Feature: Bomberman movement behaviour
     And I move to that cell
     Then I die
 
+  Scenario: Bomberman moves to a cell with power
+    Given As a bomberman
+    When I see a cell with a power
+    And I move to that cell
+    Then I get the power
+
 

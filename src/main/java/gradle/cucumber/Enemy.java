@@ -1,28 +1,24 @@
 package gradle.cucumber;
 
-public class Enemy extends Included {
+public abstract class Enemy extends Included {
+
+    protected ContentStatus status;
 
     public Enemy(){
         this.status = new Fine();
     }
 
     @Override
-    public void changeStatus(Bomberman bomberman) {
-        bomberman.setStatus(new Die());
-    }
+    public abstract void changeStatus(Bomberman bomberman);
 
     @Override
-    public boolean isEmpty() {
-        return false;
-    }
+    public abstract boolean isEmpty();
 
     @Override
-    public void destroy() {
-        this.status = new Destroyed();
-    }
+    public abstract void destroy();
 
     @Override
-    public ContentStatus getStatus() {
-        return this.status;
-    }
+    public abstract ContentStatus getStatus();
+
+    public abstract void setCell(Cell cell);
 }

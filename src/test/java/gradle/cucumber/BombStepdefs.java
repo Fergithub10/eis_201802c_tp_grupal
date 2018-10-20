@@ -47,7 +47,7 @@ public class BombStepdefs {
     public void it_explode_and_there_is_an_enemy() throws Throwable {
         List<Cell> cells = new ArrayList<Cell>();
 
-        cells.add(new Cell(new Enemy(),2));
+        cells.add(new Cell(new ProtoMaxJr(),2));
 
         this.casillero = new Casillero(cells);
 

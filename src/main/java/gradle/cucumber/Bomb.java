@@ -4,8 +4,8 @@ public class Bomb extends Included {
 
     private int time;
 
-    public Bomb(int i) {
-        this.time = i;
+    public Bomb(int ticks) {
+        this.time = ticks;
     }
 
     public void explode(Casillero casillero) {
