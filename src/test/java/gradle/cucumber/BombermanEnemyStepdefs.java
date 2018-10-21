@@ -72,7 +72,7 @@ public class BombermanEnemyStepdefs {
     @Then("^proto Max Jr dies and Bomberman gets the power to jump walls$")
     public void proto_max_jr_dies_and_Bomberman_gets_the_power_to_jump_walls() throws Throwable {
         this.bomberman.move(this.celda1);
-        assertTrue(this.protoMaxJr.getStatus().isDestroyed());
+        assertTrue(this.celda1.destroyContent());//protoMaxJr.getStatus().isDestroyed());
         assertTrue(this.bomberman.powerIncluded(jumpWall));
     }
 
@@ -87,7 +87,7 @@ public class BombermanEnemyStepdefs {
     @Then("^proto Max Units dies and Bomberman gets power to jump walls or throw several bombs at the same time$")
     public void proto_max_units_dies_and_Bomberman_gets_power_to_jump_walls_or_throw_several_bombs_at_the_same_time() throws Throwable {
         this.bomberman.move(this.celda1);
-        assertTrue(this.protoMaxUnits.getStatus().isDestroyed());
+        assertTrue(this.celda1.destroyContent()); // protoMaxUnits.getStatus().isDestroyed());
         assertTrue(this.bomberman.powerIncluded(new JumpAndThrow()));
     }
 
@@ -112,6 +112,6 @@ public class BombermanEnemyStepdefs {
     @Then("^the last bomb explodes (\\d+) cells from bomberman's position$")
     public void theLastBombExplodesCellsFromBombermanSPosition(int distance) throws Throwable {
         this.bomb.explode(this.casillero);
-        assertTrue(this.casillero.getCellByDistance(distance).getContent().getStatus().isDestroyed());
+        assertTrue(this.casillero.getCellByDistance(distance).destroyContent());
     }
 }

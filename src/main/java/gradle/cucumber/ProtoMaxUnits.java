@@ -13,12 +13,12 @@ public class ProtoMaxUnits extends Enemy{
 
     @Override
     public void destroy() {
-
+        this.status = new Destroyed();
     }
 
     @Override
     public ContentStatus getStatus() {
-        return null;
+        return this.status;
     }
 
     @Override
