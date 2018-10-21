@@ -24,4 +24,8 @@ public class Cell {
     public Included getContent() {
         return this.content;
     }
+
+    public boolean destroyContent() {
+        return this.getContent().getStatus().isDestroyed();
+    }
 }
