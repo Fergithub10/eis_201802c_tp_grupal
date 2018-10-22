@@ -58,7 +58,7 @@ public class BombermanEnemyStepdefs {
     @Then("^bagulaa dies and Bomberman gets the power to throw bombs$")
     public void bagulaa_dies_and_bomberman_gets_power_throw_bombs() throws Throwable {
         this.bomberman.move(this.celda1);
-        assertTrue(this.bagulaa.getStatus().isDestroyed());
+        assertTrue(this.bagulaa.isDead());
         assertTrue(this.bomberman.getPowers().identity() == "ThrowBomb");
     }
 
@@ -73,7 +73,7 @@ public class BombermanEnemyStepdefs {
     @Then("^proto Max Jr dies and Bomberman gets the power to jump walls$")
     public void proto_max_jr_dies_and_Bomberman_gets_the_power_to_jump_walls() throws Throwable {
         this.bomberman.move(this.celda1);
-        assertTrue(this.protoMaxJr.getStatus().isDestroyed());
+        assertTrue(this.protoMaxJr.isDead());
         assertTrue(this.bomberman.getPowers().identity() == "JumpWall");
     }
 
@@ -89,7 +89,7 @@ public class BombermanEnemyStepdefs {
     @Then("^proto Max Units dies and Bomberman gets power to jump walls or throw several bombs at the same time$")
     public void proto_max_units_dies_and_Bomberman_gets_power_to_jump_walls_or_throw_several_bombs_at_the_same_time() throws Throwable {
         this.bomberman.move(this.celda1);
-        assertTrue(this.protoMaxUnits.getStatus().isDestroyed());
+        assertTrue(this.protoMaxUnits.isDead());//getStatus().isDestroyed());
         assertTrue(this.bomberman.getPowers().identity() == "ThrowSeveralBomb");
     }
 
