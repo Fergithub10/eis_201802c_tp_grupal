@@ -1,4 +1,4 @@
-Feature: BombermanEnemy behaviour
+Feature: Bomberman Enemy behaviour
 
   # ATDD 3
 

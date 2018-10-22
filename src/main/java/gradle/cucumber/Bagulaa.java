@@ -3,7 +3,7 @@ package gradle.cucumber;
 public class Bagulaa extends Enemy{
     @Override
     public void changeStatus(Bomberman bomberman) {
-
+        bomberman.setStatus(new Die());
     }
 
     @Override

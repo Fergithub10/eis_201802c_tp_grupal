@@ -3,7 +3,7 @@ package gradle.cucumber;
 public class ProtoMaxUnits extends Enemy{
     @Override
     public void changeStatus(Bomberman bomberman) {
-
+        bomberman.setStatus(new Die());
     }
 
     @Override
@@ -13,7 +13,9 @@ public class ProtoMaxUnits extends Enemy{
 
     @Override
     public void destroy() {
+
         this.status = new Destroyed();
+        this.cell.setContent(new ThrowSeveralBomb());
     }
 
     @Override
@@ -23,6 +25,6 @@ public class ProtoMaxUnits extends Enemy{
 
     @Override
     public void setCell(Cell cell) {
-
+        this.cell = cell;
     }
 }

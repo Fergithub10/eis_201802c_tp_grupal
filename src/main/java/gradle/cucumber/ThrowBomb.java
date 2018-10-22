@@ -4,6 +4,7 @@ public class ThrowBomb extends Included implements Power{
 
     @Override
     public void changeStatus(Bomberman bomberman) {
+
         bomberman.addPower(this);
     }
 
@@ -20,5 +21,10 @@ public class ThrowBomb extends Included implements Power{
     @Override
     public ContentStatus getStatus() {
         return null;
+    }
+
+    @Override
+    public String identity() {
+        return "ThrowBomb";
     }
 }

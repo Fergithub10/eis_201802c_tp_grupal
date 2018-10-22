@@ -7,11 +7,11 @@ public class Bomberman {
 
     public Cell currentCell;
     public Status status;
-    private List<Power> powers;
+    private Power powers;
 
     public Bomberman(){
         this.status = new Alive();
-        this.powers = new ArrayList<Power>();
+        this.powers = null;
     }
 
     public boolean canMove(Cell cell) {
@@ -52,7 +52,8 @@ public class Bomberman {
     }
 
     public void addPower(Power power) {
-        powers.add(power);
+
+        this.powers = power;
     }
 
     public boolean powerIncluded(Power power) {
@@ -64,4 +65,7 @@ public class Bomberman {
         casillero.getCellByDistance(i).setContent(bomb);
     }
 
+    public Power getPowers() {
+        return powers;
+    }
 }
