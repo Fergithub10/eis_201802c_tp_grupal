@@ -8,6 +8,7 @@ public class ProtoMaxJr extends Enemy{
 
     @Override
     public void changeStatus(Bomberman bomberman) {
+
         bomberman.setStatus(new Die());
     }
 
@@ -18,7 +19,9 @@ public class ProtoMaxJr extends Enemy{
 
     @Override
     public void destroy() {
+
         this.status = new Destroyed();
+        this.cell.setContent(new JumpWall());
     }
 
     @Override
@@ -29,5 +32,6 @@ public class ProtoMaxJr extends Enemy{
     @Override
     public void setCell(Cell cell) {
 
+        this.cell = cell;
     }
 }

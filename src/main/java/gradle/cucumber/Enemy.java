@@ -21,4 +21,8 @@ public abstract class Enemy extends Included {
     public abstract ContentStatus getStatus();
 
     public abstract void setCell(Cell cell);
+
+    public boolean isDead() {
+        return this.getStatus().isDestroyed();
+    }
 }

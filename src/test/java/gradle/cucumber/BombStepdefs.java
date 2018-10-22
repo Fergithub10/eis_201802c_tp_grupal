@@ -13,6 +13,7 @@ public class BombStepdefs {
     private Bomb bomb;
     private Wall melaninWall;
     private Casillero casillero;
+    private Enemy enemigo;
 
     @Given("^As a bomb with a time of 3 seconds")
     public void as_a_bomb_with_3_seconds() throws Throwable {
@@ -46,8 +47,10 @@ public class BombStepdefs {
     @When("^it explodes and there is an enemy$")
     public void it_explode_and_there_is_an_enemy() throws Throwable {
         List<Cell> cells = new ArrayList<Cell>();
-
-        cells.add(new Cell(new ProtoMaxJr(),2));
+        this.enemigo = new ProtoMaxJr();
+        Cell celda = new Cell(this.enemigo,2);
+        this.enemigo.setCell(celda);
+        cells.add(new Cell(this.enemigo,2));
 
         this.casillero = new Casillero(cells);
 

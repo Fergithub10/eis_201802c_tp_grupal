@@ -1,6 +1,5 @@
 package gradle.cucumber;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -25,6 +24,7 @@ public class BombermanEnemyStepdefs {
     private ThrowBomb throwBomb;
     private JumpWall jumpWall;
     private ThrowSeveralBomb manyBombs;
+
 
     @Given("^a Bomberman that leaves a bomb$")
     public void a_bomberman_that_leaves_a_bomb() throws Throwable {
@@ -58,28 +58,30 @@ public class BombermanEnemyStepdefs {
     @Then("^bagulaa dies and Bomberman gets the power to throw bombs$")
     public void bagulaa_dies_and_bomberman_gets_power_throw_bombs() throws Throwable {
         this.bomberman.move(this.celda1);
-        assertTrue(this.bagulaa.getStatus().isDestroyed());
-        assertTrue(this.bomberman.powerIncluded(this.throwBomb));
+        assertTrue(this.bagulaa.isDead());
+        assertTrue(this.bomberman.getPowers().identity() == "ThrowBomb");
     }
 
     @When("^proto Max Jr is near and the bomb explodes$")
     public void proto_max_jr_is_near_and_the_bomb_explodes() throws Throwable {
         this.protoMaxJr = new ProtoMaxJr();
-        celda1.setContent(this.protoMaxJr);
+        this.protoMaxJr.setCell(this.celda1);
+        celda1.setContent(protoMaxJr);
         this.bomb.explode(this.casillero);
     }
 
     @Then("^proto Max Jr dies and Bomberman gets the power to jump walls$")
     public void proto_max_jr_dies_and_Bomberman_gets_the_power_to_jump_walls() throws Throwable {
         this.bomberman.move(this.celda1);
-        assertTrue(this.celda1.destroyContent());//protoMaxJr.getStatus().isDestroyed());
-        assertTrue(this.bomberman.powerIncluded(jumpWall));
+        assertTrue(this.protoMaxJr.isDead());
+        assertTrue(this.bomberman.getPowers().identity() == "JumpWall");
     }
 
 
     @When("^proto Max Units is near and the bomb explodes$")
     public void proto_Max_Units_is_near_and_the_bomb_explodes() throws Throwable {
         this.protoMaxUnits = new ProtoMaxUnits();
+        this.protoMaxUnits.setCell(this.celda1);
         this.celda1.setContent(this.protoMaxUnits);
         this.bomb.explode(this.casillero);
     }
@@ -87,8 +89,8 @@ public class BombermanEnemyStepdefs {
     @Then("^proto Max Units dies and Bomberman gets power to jump walls or throw several bombs at the same time$")
     public void proto_max_units_dies_and_Bomberman_gets_power_to_jump_walls_or_throw_several_bombs_at_the_same_time() throws Throwable {
         this.bomberman.move(this.celda1);
-        assertTrue(this.celda1.destroyContent()); // protoMaxUnits.getStatus().isDestroyed());
-        assertTrue(this.bomberman.powerIncluded(new JumpAndThrow()));
+        assertTrue(this.protoMaxUnits.isDead());//getStatus().isDestroyed());
+        assertTrue(this.bomberman.getPowers().identity() == "ThrowSeveralBomb");
     }
 
     @And("^bomberman throws a new bomb$")
