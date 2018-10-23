@@ -2,25 +2,27 @@ package gradle.cucumber;
 
 import java.util.List;
 
-public class JumpAndThrow extends Included implements Power {
+public class DefaultPower extends Included implements Power {
     @Override
     public String identity() {
-        return "JumpAndThrow";
+        return null;
     }
 
     @Override
     public void putBomb(Cell currentCell, List<Bomb> bomb, Casillero casillero, Integer i) {
-       new ThrowSeveralBomb().putBomb(currentCell, bomb, casillero, i );
+        Bomb b = bomb.get(0);
+        currentCell.setContent(b);
+        b.setCell(currentCell);
     }
 
     @Override
     public void jumpWall(Casillero casillero, Bomberman bomberman) {
-        new JumpWall().jumpWall(casillero, bomberman);
+
     }
 
     @Override
     public void changeStatus(Bomberman bomberman) {
-        bomberman.addPower(this);
+
     }
 
     @Override

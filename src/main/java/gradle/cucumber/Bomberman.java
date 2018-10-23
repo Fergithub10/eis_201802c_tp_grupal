@@ -7,11 +7,11 @@ public class Bomberman {
 
     public Cell currentCell;
     public Status status;
-    private Power powers;
+    private Power power;
 
     public Bomberman(){
         this.status = new Alive();
-        this.powers = null;
+        this.power = new DefaultPower();
     }
 
     public boolean canMove(Cell cell) {
@@ -41,19 +41,13 @@ public class Bomberman {
 
     public void setCell(Cell cell) { this.currentCell = cell; }
 
-    public void putBomb(Bomb bomb ) {
-        this.currentCell.setContent(bomb);
-        bomb.setCell(this.currentCell);
-    }
-
-    public void putBomb(Bomb bomb, int i, Casillero casillero ) {
-        this.currentCell.setContent(bomb);
-        bomb.setCell(this.currentCell);
+    public void putBomb(ArrayList<Bomb> bombs, int i, Casillero casillero ) {
+        this.power.putBomb(this.currentCell, bombs, casillero, 0);
     }
 
     public void addPower(Power power) {
 
-        this.powers = power;
+        this.power = power;
     }
 
     public boolean powerIncluded(Power power) {
@@ -62,10 +56,10 @@ public class Bomberman {
     }
 
     public void throwBomb(Bomb bomb, int i, Casillero casillero) {
-        casillero.getCellByDistance(i).setContent(bomb);
+
     }
 
     public Power getPowers() {
-        return powers;
+        return power;
     }
 }

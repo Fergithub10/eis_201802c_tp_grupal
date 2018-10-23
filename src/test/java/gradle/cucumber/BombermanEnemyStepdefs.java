@@ -44,7 +44,10 @@ public class BombermanEnemyStepdefs {
         cells.add(celda2);
 
         this.casillero = new Casillero(cells);
-        this.bomberman.putBomb(this.bomb);
+        ArrayList<Bomb> bombs= new ArrayList<Bomb>();
+        bombs.add(bomb);
+
+        this.bomberman.putBomb(bombs, 0, this.casillero);
     }
 
     @When("^bagulaa is near and the bomb explodes$")
@@ -89,7 +92,7 @@ public class BombermanEnemyStepdefs {
     @Then("^proto Max Units dies and Bomberman gets power to jump walls or throw several bombs at the same time$")
     public void proto_max_units_dies_and_Bomberman_gets_power_to_jump_walls_or_throw_several_bombs_at_the_same_time() throws Throwable {
         this.bomberman.move(this.celda1);
-        assertTrue(this.protoMaxUnits.isDead());//getStatus().isDestroyed());
+        assertTrue(this.protoMaxUnits.isDead());
         assertTrue(this.bomberman.getPowers().identity() == "ThrowSeveralBomb");
     }
 
