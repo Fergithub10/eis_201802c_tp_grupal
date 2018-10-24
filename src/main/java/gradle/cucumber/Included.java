@@ -13,4 +13,6 @@ public abstract class Included {
     public abstract void destroy();
 
     public abstract ContentStatus getStatus();
+
+    public abstract boolean isABomb();
 }

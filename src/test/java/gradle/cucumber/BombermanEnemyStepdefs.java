@@ -25,7 +25,8 @@ public class BombermanEnemyStepdefs {
     private ThrowBomb throwBomb;
     private JumpWall jumpWall;
     private ThrowSeveralBomb manyBombs;
-
+    private List<Bomb> bombs;
+    private ArrayList<Cell> cells;
 
     @Given("^a Bomberman that leaves a bomb$")
     public void a_bomberman_that_leaves_a_bomb() throws Throwable {
@@ -153,5 +154,39 @@ public class BombermanEnemyStepdefs {
     public void aBombermanJumpsLockerWithAWall(int arg0) throws Throwable {
         // Write code here that turns the phrase above into concrete actions
         assertTrue(this.bomberman.getCell().isEmpty());
+    }
+
+    @When("^a bomberman gets the power to throw several bombs$")
+    public void aBombermanGetsThePowerToThrowSeveralBombs() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        Wall melanin = new Melanin();
+        Wall metal = new Metal();
+
+        this.celda0 = new Cell(metal, 0);
+        this.celda1 = new Cell(melanin, 1);
+        this.celda2 = new Cell(new EmptyContent(), 2);
+
+        Bomb bomb0 = new Bomb(3);
+        Bomb bomb1 = new Bomb(3);
+
+        this.bombs = new ArrayList<>();
+        bombs.add(bomb0);
+        bombs.add(bomb1);
+
+        this.cells = new ArrayList<Cell>();
+        cells.add(celda0);
+        cells.add(celda1);
+
+        this.casillero = new Casillero(cells);
+
+        this.bomberman.addPower(new ThrowSeveralBomb());
+        this.bomberman.getPowers().putBomb(this.bomberman.getCell(),bombs,casillero,2);
+    }
+
+    @Then("^a bomberman throws (\\d+) bombs simultaneously$")
+    public void aBombermanThrowsBombsSimultaneously(int arg0) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        assertTrue(this.cells.get(0).getContent().isABomb());
+        assertTrue(this.cells.get(1).getContent().isABomb());
     }
 }

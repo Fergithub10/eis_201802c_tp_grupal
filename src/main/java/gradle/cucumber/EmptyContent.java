@@ -20,4 +20,9 @@ public class EmptyContent extends Included {
     public ContentStatus getStatus() {
        return this.status;
     }
+
+    @Override
+    public boolean isABomb() {
+        return false;
+    }
 }

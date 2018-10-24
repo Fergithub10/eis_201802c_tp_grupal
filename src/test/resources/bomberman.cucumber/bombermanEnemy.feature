@@ -37,10 +37,10 @@ Feature: Bomberman Enemy behaviour
     When proto Max Units is near and the bomb explodes
     Then proto Max Units dies and Bomberman gets power to jump walls or throw several bombs at the same time
 
-  #  Scenario: Bomberman launches several bombs with the power to throw several bombs
-#	Given a bomberman
-#	When a bomberman gets the power to throw several bombs
-#	Then a bomberman throws 2 bombs simultaneously
+    Scenario: Bomberman launches several bombs with the power to throw several bombs
+	Given a bomberman
+	When a bomberman gets the power to throw several bombs
+	Then a bomberman throws 2 bombs simultaneously
 
 
-#
+
