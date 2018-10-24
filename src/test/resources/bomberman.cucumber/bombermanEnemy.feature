@@ -22,10 +22,10 @@ Feature: Bomberman Enemy behaviour
     Then proto Max Jr dies and Bomberman gets the power to jump walls
 
 
-#  Scenario: Bomberman jumps a wall with the power to jump walls
-#	Given a bomberman
-#	When a bomberman gets the power to jump walls
-#	Then a bomberman jumps 1 locker with a wall
+  Scenario: Bomberman jumps a wall with the power to jump walls
+	Given a bomberman
+	When a bomberman gets the power to jump walls
+	Then a bomberman jumps 1 locker with a wall
 
 
 

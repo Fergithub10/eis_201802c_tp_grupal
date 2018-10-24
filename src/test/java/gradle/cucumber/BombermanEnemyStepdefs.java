@@ -1,5 +1,6 @@
 package gradle.cucumber;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -118,5 +119,39 @@ public class BombermanEnemyStepdefs {
     public void theLastBombExplodesCellsFromBombermanSPosition(int distance) throws Throwable {
         this.bomb.explode(this.casillero);
         assertTrue(this.casillero.getCellByDistance(distance).destroyContent());
+    }
+
+
+    @Given("^a bomberman$")
+    public void aBomberman() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        this.bomberman = new Bomberman();
+    }
+
+
+    @When("^a bomberman gets the power to jump walls$")
+    public void aBombermanGetsThePowerToJumpWalls() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        Wall melanin = new Melanin();
+        Wall metal = new Metal();
+
+        this.celda0 = new Cell(metal, 0);
+        this.celda1 = new Cell(melanin, 1);
+        this.celda2 = new Cell(new EmptyContent(), 2);
+
+        List<Cell> cells = new ArrayList<Cell>();
+        cells.add(celda0);
+        cells.add(celda1);
+        cells.add(celda2);
+
+        this.casillero = new Casillero(cells);
+        this.bomberman.addPower(new JumpWall());
+        this.bomberman.getPowers().jumpWall(casillero,this.bomberman);
+    }
+
+    @Then("^a bomberman jumps (\\d+) locker with a wall$")
+    public void aBombermanJumpsLockerWithAWall(int arg0) throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        assertTrue(this.bomberman.getCell().isEmpty());
     }
 }

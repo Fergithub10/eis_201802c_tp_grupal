@@ -17,7 +17,7 @@ public class JumpWall extends Included implements Power{
     public void jumpWall(Casillero casillero, Bomberman bomberman) {
         for (Cell c : casillero.getCells()) {
             if (c.getContent().isEmpty()){
-                bomberman.move(cell);
+                bomberman.move(c);
                 break;
             }
         }
