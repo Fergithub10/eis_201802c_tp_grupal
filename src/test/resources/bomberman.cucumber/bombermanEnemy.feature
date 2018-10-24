@@ -7,12 +7,11 @@ Feature: Bomberman Enemy behaviour
     When bagulaa is near and the bomb explodes
     Then bagulaa dies and Bomberman gets the power to throw bombs
 
-  #Scenario: Bomberman kills Bagulaa and throw a new bomb
-   # Given a Bomberman that leaves a bomb
-    #When bagulaa is near and the bomb explodes
-    #And bagulaa dies and Bomberman gets the power to throw bombs
-    #And bomberman throws a new bomb
-    #Then the last bomb explodes 3 cells from bomberman's position
+  Scenario: Bomberman throw bombs with the power to throw bombs
+    Given a bomberman
+    When a bomberman gets the power to throw bomb
+    Then  the bomberman throws the bomb 2 squares from his position and destroys a wall of melanin
+
 
   # ATDD 4
 

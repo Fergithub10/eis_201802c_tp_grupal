@@ -44,4 +44,16 @@ public class ThrowBomb extends Included implements Power{
     public void jumpWall(Casillero casillero, Bomberman bomberman) {
 
     }
+
+    @Override
+    public void throwBomb(Bomb bomb, int i, Bomberman bomberman, Casillero casillero) {
+        int finalPosition = bomberman.currentCell.position + i;
+        for (Cell c : casillero.getCells()){
+            if (c.position == finalPosition){
+                bomb.setCell(c);
+            }
+
+        }
+    }
+
 }

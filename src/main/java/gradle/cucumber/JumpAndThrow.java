@@ -19,6 +19,11 @@ public class JumpAndThrow extends Included implements Power {
     }
 
     @Override
+    public void throwBomb(Bomb bomb, int i, Bomberman bomberman, Casillero casillero) {
+
+    }
+
+    @Override
     public void changeStatus(Bomberman bomberman) {
         bomberman.addPower(this);
     }

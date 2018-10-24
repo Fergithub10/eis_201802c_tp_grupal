@@ -56,10 +56,6 @@ public class Bomberman {
         return true;
     }
 
-    public void throwBomb(Bomb bomb, int i, Casillero casillero) {
-
-    }
-
     public Power getPowers() {
         return power;
     }

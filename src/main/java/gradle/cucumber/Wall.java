@@ -14,8 +14,7 @@ public class Wall extends Included{
         return false;
     }
 
-    public void destroy() {
-        this.status = new Destroyed();
+    public void destroy() { this.status = new Destroyed();
     }
 
 

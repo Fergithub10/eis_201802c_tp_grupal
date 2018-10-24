@@ -5,6 +5,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.junit.Assert;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,14 +16,19 @@ public class BombermanEnemyStepdefs {
 
     private Bomberman bomberman;
     private Bomb bomb;
+    private Bomb bomb2;
     private Bagulaa bagulaa;
     private ProtoMaxJr protoMaxJr;
     private ProtoMaxUnits protoMaxUnits;
     private Casillero casillero;
+    private Casillero casillero2;
     private Cell celda0;
     private Cell celda1;
     private Cell celda2;
-    private ThrowBomb throwBomb;
+    private Cell celda3;
+    private Cell celda4;
+    private Cell celda5;
+    private ThrowBomb throwBombP;
     private JumpWall jumpWall;
     private ThrowSeveralBomb manyBombs;
     private List<Bomb> bombs;
@@ -37,7 +43,6 @@ public class BombermanEnemyStepdefs {
         this.celda1 = new Cell(new EmptyContent(), 1);
         this.celda2 = new Cell(new EmptyContent(), 2);
 
-        // El bomberman no debería implementar Included? Para asignarlo a una celda.
         this.bomberman.setCell(celda0);
 
         List<Cell> cells = new ArrayList<Cell>();
@@ -67,6 +72,46 @@ public class BombermanEnemyStepdefs {
         assertTrue(this.bomberman.getPowers().identity() == "ThrowBomb");
     }
 
+    @Given("^a bomberman$")
+    public void aBomberman() throws Throwable {
+        // Write code here that turns the phrase above into concrete actions
+        this.bomberman = new Bomberman();
+    }
+
+    @When("^a bomberman gets the power to throw bomb$")
+    public void aBombermanGetsThePowerToThrowBomb() throws Throwable {
+
+        this.celda0 = new Cell(new EmptyContent(), 0);
+        this.celda1 = new Cell(new EmptyContent(), 1);
+        this.celda2 = new Cell(new Melanin(), 2);
+        this.celda3 = new Cell(new EmptyContent(), 3);
+        this.celda4 = new Cell(new EmptyContent(), 4);
+        this.celda5 = new Cell(new EmptyContent(), 5);
+
+        List<Cell> cells = new ArrayList<Cell>();
+        cells.add(celda0);
+        cells.add(celda1);
+        cells.add(celda2);
+        cells.add(celda3);
+        cells.add(celda4);
+        cells.add(celda5);
+
+        this.bomberman.setCell(celda0);
+        this.bomb2 = new Bomb(3);
+
+        this.casillero = new Casillero(cells);
+        this.bomberman.addPower(new ThrowBomb());
+    }
+
+    @Then("^the bomberman throws the bomb (\\d+) squares from his position and destroys a wall of melanin$")
+    public void the_bomberman_throws_the_bomb_squares_from_his_position_and_destroys_a_wall_of_melanin(int pos) throws Throwable {
+        this.bomberman.getPowers().throwBomb(this.bomb2,pos, bomberman,casillero);
+        assertTrue(bomb2.cell.position == 2);
+        assertTrue(this.casillero.getCells().get(2).getContent().getStatus().isFine());
+        this.bomb2.explode(casillero);
+        assertTrue(this.casillero.getCells().get(2).getContent().getStatus().isDestroyed());
+    }
+
     @When("^proto Max Jr is near and the bomb explodes$")
     public void proto_max_jr_is_near_and_the_bomb_explodes() throws Throwable {
         this.protoMaxJr = new ProtoMaxJr();
@@ -74,6 +119,7 @@ public class BombermanEnemyStepdefs {
         celda1.setContent(protoMaxJr);
         this.bomb.explode(this.casillero);
     }
+
 
     @Then("^proto Max Jr dies and Bomberman gets the power to jump walls$")
     public void proto_max_jr_dies_and_Bomberman_gets_the_power_to_jump_walls() throws Throwable {
@@ -96,37 +142,6 @@ public class BombermanEnemyStepdefs {
         this.bomberman.move(this.celda1);
         assertTrue(this.protoMaxUnits.isDead());
         assertTrue(this.bomberman.getPowers().identity() == "ThrowSeveralBomb");
-    }
-
-    @And("^bomberman throws a new bomb$")
-    public void bombermanThrowsANewBomb() throws Throwable {
-        this.celda0 = new Cell(new EmptyContent(), 0);
-        this.celda1 = new Cell(new EmptyContent(), 1);
-        this.celda2 = new Cell(new EmptyContent(), 2);
-
-        this.bomb = new Bomb(3);
-
-        List<Cell> cells = new ArrayList<Cell>();
-        cells.add(celda0);
-        cells.add(celda1);
-        cells.add(celda2);
-
-        this.casillero = new Casillero(cells);
-
-       this.bomberman.throwBomb(this.bomb, 3, casillero);
-    }
-
-    @Then("^the last bomb explodes (\\d+) cells from bomberman's position$")
-    public void theLastBombExplodesCellsFromBombermanSPosition(int distance) throws Throwable {
-        this.bomb.explode(this.casillero);
-        assertTrue(this.casillero.getCellByDistance(distance).destroyContent());
-    }
-
-
-    @Given("^a bomberman$")
-    public void aBomberman() throws Throwable {
-        // Write code here that turns the phrase above into concrete actions
-        this.bomberman = new Bomberman();
     }
 
 
