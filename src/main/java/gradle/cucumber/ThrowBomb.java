@@ -26,6 +26,11 @@ public class ThrowBomb extends Included implements Power{
     }
 
     @Override
+    public boolean isABomb() {
+        return false;
+    }
+
+    @Override
     public String identity() {
         return "ThrowBomb";
     }

@@ -24,6 +24,7 @@ public class Bomberman {
     }
 
     private void updateStatus(){
+
         this.currentCell.getContent().changeStatus(this);
     }
 
@@ -61,5 +62,9 @@ public class Bomberman {
 
     public Power getPowers() {
         return power;
+    }
+
+    public Cell getCell() {
+        return this.currentCell;
     }
 }

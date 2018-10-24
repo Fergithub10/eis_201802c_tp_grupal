@@ -30,6 +30,11 @@ public class ProtoMaxJr extends Enemy{
     }
 
     @Override
+    public boolean isABomb() {
+        return false;
+    }
+
+    @Override
     public void setCell(Cell cell) {
 
         this.cell = cell;

@@ -23,6 +23,11 @@ public class Wall extends Included{
         return status;
     }
 
+    @Override
+    public boolean isABomb() {
+        return false;
+    }
+
     public void setStatus(ContentStatus status) {
         this.status = status;
     }

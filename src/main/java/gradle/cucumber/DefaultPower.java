@@ -39,4 +39,9 @@ public class DefaultPower extends Included implements Power {
     public ContentStatus getStatus() {
         return null;
     }
+
+    @Override
+    public boolean isABomb() {
+        return false;
+    }
 }

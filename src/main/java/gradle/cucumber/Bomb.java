@@ -41,4 +41,8 @@ public class Bomb extends Included {
     public void setCell(Cell cell){
         this.cell = cell;
     }
+
+    public boolean isABomb(){
+        return true;
+    }
 }
