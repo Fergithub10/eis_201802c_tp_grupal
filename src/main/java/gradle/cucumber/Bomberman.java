@@ -53,7 +53,7 @@ public class Bomberman {
 
     public boolean powerIncluded(Power power) {
        /*TODO mejorar busqueda*/
-        return true; //this.powers.size() != 0 ;
+        return true;
     }
 
     public void throwBomb(Bomb bomb, int i, Casillero casillero) {
